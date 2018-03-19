@@ -9,7 +9,7 @@ public class GeneralFrame extends JFrame{
     /*private JTable table;
     private final static String[] header =  {"NAME","SURNAME","PASSPORT"};
 */
-    public  GeneralFrame(){
+    GeneralFrame(){
 
         this.setSize(800,400);
         this.setTitle("General Window");
@@ -21,7 +21,7 @@ public class GeneralFrame extends JFrame{
 
         addWorker = new JButton("ADD worker");
         //addWorker.setBackground(Color.ORANGE);
-        findWorker = new JButton("FIND orker");
+        findWorker = new JButton("FIND worker");
         //findWorker.setBackground(Color.PINK);
         changeWorker = new JButton("CHANGE worker");
         //changeWorker.setBackground(Color.YELLOW);
@@ -46,4 +46,6 @@ public class GeneralFrame extends JFrame{
         setVisible(true);
 
     }
+
+
 }
