@@ -5,7 +5,7 @@ public class AddFrame extends JFrame {
 
     //private JLabel nameLabel, surnameLabel, passportLabel;
     //private JTextField nameTextField, surnameTextField, passportTextField;
-   // private JPanel panelForText, panelForButton;
+    private JPanel buttonPanel, panelForText;
     private JCheckBox toTXT, toBinary, toXML;
     private JButton OK, clear, cancel;
 
@@ -49,7 +49,7 @@ public class AddFrame extends JFrame {
 
 
 /*-------------------------------------------------------------*/
-        JButton buttonPanel = new JButton();
+        buttonPanel = new JPanel();
         buttonPanel.setLayout(new GridLayout(1,3));
 
         OK = new JButton("Add");
@@ -57,7 +57,6 @@ public class AddFrame extends JFrame {
         //OK.addActionListener(this);
         clear = new JButton("Clear");
         cancel = new JButton("Cancel");
-        buttonPanel.setText("---------!!!!!!!!!!------------");
         buttonPanel.add(OK);
         buttonPanel.add(clear);
         buttonPanel.add(cancel);

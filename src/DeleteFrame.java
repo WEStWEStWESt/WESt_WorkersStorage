@@ -5,7 +5,7 @@ public class DeleteFrame extends JFrame {
 
     private JLabel nameLabel, surnameLabel, passportLabel;
     private JTextField nameTextField, surnameTextField, passportTextField;
-    private JPanel panelForText, panelForButton;
+    private JPanel buttonPanel, panelForText, panelForButton;
 
     private JButton OK, clear, cancel;
 
@@ -40,7 +40,7 @@ public class DeleteFrame extends JFrame {
         checkBoxPanel.setLayout(new GridLayout(1,3));
 
        /*-------------------------------------------------------------*/
-        JButton buttonPanel = new JButton();
+        buttonPanel = new JPanel();
         buttonPanel.setLayout(new GridLayout(1,3));
 
         OK = new JButton("Delete");
@@ -48,7 +48,6 @@ public class DeleteFrame extends JFrame {
         //OK.addActionListener(this);
         clear = new JButton("Clear");
         cancel = new JButton("Cancel");
-        buttonPanel.setText("---------!!!!!!!!!!------------");
         buttonPanel.add(OK);
         buttonPanel.add(clear);
         buttonPanel.add(cancel);

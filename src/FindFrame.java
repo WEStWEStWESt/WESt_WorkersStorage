@@ -46,8 +46,8 @@ public class FindFrame extends JFrame {
 
 
         leftPanel.add(findBy);
-        leftPanel.add(findTextField);
         leftPanel.add(choise);
+        leftPanel.add(findTextField);
         leftPanel.add(emptyText);
         leftPanel.add(find);
         leftPanel.add(clear);
