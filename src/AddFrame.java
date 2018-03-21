@@ -13,7 +13,7 @@ public class AddFrame extends JFrame {
 
         this.setSize(450,300);
         this.setTitle("Frame to Add");
-        setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
 
         setLayout(new BorderLayout());
 
