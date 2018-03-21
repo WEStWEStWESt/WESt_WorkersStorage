@@ -3,5 +3,6 @@ public class Main {
         new GeneralFrame();
         new AddFrame();
         new FindFrame();
+        new DeleteFrame();
     }
 }
