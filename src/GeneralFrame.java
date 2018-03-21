@@ -1,14 +1,16 @@
 import javax.swing.*;
+import javax.swing.table.AbstractTableModel;
+import javax.swing.table.JTableHeader;
 import java.awt.*;
 
-public class GeneralFrame extends JFrame{
+public class GeneralFrame extends JFrame {
 
     private JPanel buttonPanel, tablePanel;
     private JButton addWorker, findWorker, changeWorker, deleteWorker ;
 
-    /*private JTable table;
-    private final static String[] header =  {"NAME","SURNAME","PASSPORT"};
-*/
+    private JTable table;
+    //private final static String[] header =  {"NAME","SURNAME","PASSPORT"};
+
     GeneralFrame(){
 
         this.setSize(800,400);
@@ -37,13 +39,15 @@ public class GeneralFrame extends JFrame{
         this.tablePanel.setBackground(Color.GRAY);
 
 
-       // table = new JTable();
+
+
 
 
         this.add(buttonPanel, BorderLayout.EAST);
         this.add(tablePanel, BorderLayout.CENTER);
 
         setVisible(true);
+
 
     }
 
