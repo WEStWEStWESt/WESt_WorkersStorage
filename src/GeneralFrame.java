@@ -1,7 +1,7 @@
 import javax.swing.*;
-import javax.swing.table.AbstractTableModel;
-import javax.swing.table.JTableHeader;
+
 import java.awt.*;
+import java.util.List;
 
 public class GeneralFrame extends JFrame {
 
@@ -9,14 +9,17 @@ public class GeneralFrame extends JFrame {
     private JButton addWorker, findWorker, changeWorker, deleteWorker ;
 
     private JTable table;
-    //private final static String[] header =  {"NAME","SURNAME","PASSPORT"};
+    private final static String[] header =  {"NAME","SURNAME","PASSPORT"};
+    public static WorkersTable workersTable;
 
-    GeneralFrame(){
+    GeneralFrame(List<Worker> all){
 
         this.setSize(800,400);
         this.setTitle("General Window");
-        setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        this.setLayout(new BorderLayout());
         //this.setLocationRelativeTo(null);
+
 
         buttonPanel = new JPanel();
         buttonPanel.setLayout(new GridLayout(5,1));
@@ -34,13 +37,16 @@ public class GeneralFrame extends JFrame {
         buttonPanel.add(findWorker);
         buttonPanel.add(changeWorker);
         buttonPanel.add(deleteWorker);
-
+/*----------------------------------------------------------*/
         tablePanel = new JPanel();
         this.tablePanel.setBackground(Color.GRAY);
+        workersTable = new WorkersTable(all , header);
+        workersTable.fireTableDataChanged();
 
+        table = new JTable(workersTable);
 
-
-
+        tablePanel.add(new JScrollPane(table), BorderLayout.CENTER);
+/*----------------------------------------------------------*/
 
 
         this.add(buttonPanel, BorderLayout.EAST);
