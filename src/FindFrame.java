@@ -1,5 +1,7 @@
 import javax.swing.*;
 import java.awt.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class FindFrame extends JFrame {
 
@@ -8,6 +10,10 @@ public class FindFrame extends JFrame {
     private JTextField findTextField;
     private JPanel leftPanel, rightPanel;
     private JButton find, clear, back;
+
+    private String[] findHeader = WorkersTable.header;
+    private static List<Worker> findWorker = new ArrayList<>();
+    public static FindTable findTable;
 
     FindFrame(){
 
@@ -54,6 +60,15 @@ public class FindFrame extends JFrame {
         leftPanel.add(back);
     /*----------------------------------------------*/
 
+
+        rightPanel = new JPanel();
+
+        /*findWorker = new WorkersTable( , );
+        findWorker.fireTableDataChanged();
+
+        table = new JTable(workersTable);
+
+        findWorker.add(new JScrollPane(findWorker), BorderLayout.CENTER);*/
 
         this.add(leftPanel, BorderLayout.WEST);
 
