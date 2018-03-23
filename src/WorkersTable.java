@@ -19,6 +19,14 @@ public class WorkersTable extends AbstractTableModel {
     }
 
 
+    public String[] getHeader() {
+        return header;
+    }
+
+    public List<Worker> getWorkerList() {
+        return workerList;
+    }
+
     public  String getColumnName(int c){
         return header[c];
     }
