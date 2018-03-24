@@ -100,7 +100,7 @@ public class FindFrame extends JFrame {
     private JComboBox choice;
 
     private JTable results;
-    private String[] header = WorkersTable.header;
+    private String[] header = GeneralFrame.header;
     private List<Worker> findWorkers = new ArrayList<>();
     public static FindTable findWorkersTable;
 

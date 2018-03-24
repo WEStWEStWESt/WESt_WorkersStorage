@@ -9,7 +9,7 @@ public class GeneralFrame extends JFrame {
     private JButton addWorker, findWorker, changeWorker, deleteWorker ;
 
     private JTable table;
-    private final static String[] header =  {"NAME","SURNAME","PASSPORT"};
+    public final static String[] header =  {"NAME","SURNAME","PASSPORT"};
     public static WorkersTable workersTable;
 
     GeneralFrame(List<Worker> all){
@@ -39,13 +39,14 @@ public class GeneralFrame extends JFrame {
         buttonPanel.add(deleteWorker);
 /*----------------------------------------------------------*/
         tablePanel = new JPanel();
+        tablePanel.setLayout(new GridLayout(1, 1));
         this.tablePanel.setBackground(Color.GRAY);
         workersTable = new WorkersTable(all , header);
         workersTable.fireTableDataChanged();
 
         table = new JTable(workersTable);
 
-        tablePanel.add(new JScrollPane(table), BorderLayout.CENTER);
+        tablePanel.add(new JScrollPane(table)/*, BorderLayout.CENTER*/);
 /*----------------------------------------------------------*/
 
 
