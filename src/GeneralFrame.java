@@ -1,9 +1,11 @@
 import javax.swing.*;
 
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.List;
 
-public class GeneralFrame extends JFrame {
+public class GeneralFrame extends JFrame implements ActionListener {
 
     private JPanel buttonPanel, tablePanel;
     private JButton addWorker, findWorker, changeWorker, deleteWorker ;
@@ -19,7 +21,6 @@ public class GeneralFrame extends JFrame {
         this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         this.setLayout(new BorderLayout());
         //this.setLocationRelativeTo(null);
-
 
         buttonPanel = new JPanel();
         buttonPanel.setLayout(new GridLayout(5,1));
@@ -49,14 +50,17 @@ public class GeneralFrame extends JFrame {
         tablePanel.add(new JScrollPane(table)/*, BorderLayout.CENTER*/);
 /*----------------------------------------------------------*/
 
-
         this.add(buttonPanel, BorderLayout.EAST);
         this.add(tablePanel, BorderLayout.CENTER);
 
         setVisible(true);
-
-
     }
 
 
+    @Override
+    public void actionPerformed(ActionEvent e) {
+
+
+
+    }
 }

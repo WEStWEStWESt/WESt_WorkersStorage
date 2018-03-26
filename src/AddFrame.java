@@ -1,11 +1,15 @@
+import org.omg.IOP.ExceptionDetailMessage;
+
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
-public class AddFrame extends JFrame {
+public class AddFrame extends JFrame implements ActionListener{
 
-    //private JLabel nameLabel, surnameLabel, passportLabel;
-    //private JTextField nameTextField, surnameTextField, passportTextField;
-    private JPanel buttonPanel, panelForText;
+    private JLabel nameLabel, surnameLabel, passportLabel;
+    private JTextField nameTextField, surnameTextField, passportTextField;
+    private JPanel buttonPanel;
     private JCheckBox toTXT, toBinary, toXML;
     private JButton OK, clear, cancel;
 
@@ -14,18 +18,19 @@ public class AddFrame extends JFrame {
         this.setSize(450,300);
         this.setTitle("Frame to Add");
         setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+        setLocationRelativeTo(null);
 
         setLayout(new BorderLayout());
 
         JPanel panelForText = new JPanel();
         panelForText.setLayout(new GridLayout(6,1));
 
-        JLabel nameLabel = new JLabel("ENTER NAME");
-        JTextField nameTextField = new JTextField();
-        JLabel surnameLabel = new JLabel("ENTER SURNAME");
-        JTextField surnameTextField = new JTextField();
-        JLabel passportLabel = new JLabel("ENTER PASSPORT NUMBER");
-        JTextField passportTextField = new JTextField();
+        nameLabel = new JLabel("ENTER NAME");
+        nameTextField = new JTextField();
+        surnameLabel = new JLabel("ENTER SURNAME");
+        surnameTextField = new JTextField();
+        passportLabel = new JLabel("ENTER PASSPORT NUMBER");
+        passportTextField = new JTextField();
 
         panelForText.add(nameLabel);
         panelForText.add(nameTextField);
@@ -47,30 +52,64 @@ public class AddFrame extends JFrame {
         checkBoxPanel.add(toBinary);
         checkBoxPanel.add(toXML);
 
-
 /*-------------------------------------------------------------*/
         buttonPanel = new JPanel();
         buttonPanel.setLayout(new GridLayout(1,3));
 
         OK = new JButton("Add");
-        //OK.setActionCommand("ADDED");
-        //OK.addActionListener(this);
+        OK.setActionCommand("Add");
+        OK.addActionListener(this);
         clear = new JButton("Clear");
+        clear.setActionCommand("Clear");
+        clear.addActionListener(this);
         cancel = new JButton("Cancel");
+        cancel.setActionCommand("Cancel");
+        cancel.addActionListener(this);
         buttonPanel.add(OK);
         buttonPanel.add(clear);
         buttonPanel.add(cancel);
-
 
 /*-------------------------------------------------------------*/
         add(panelForText, BorderLayout.CENTER);
         container.add(checkBoxPanel);
         container.add(buttonPanel);
         add(container, BorderLayout.SOUTH);
-      //  add(buttonPanel, BorderLayout.SOUTH);
-
 
         setVisible(true);
     }
 
+    @Override
+    public void actionPerformed(ActionEvent e) {
+
+        String command = e.getActionCommand();
+
+        switch (command){
+            case "Add":
+
+                    if (!nameTextField.getText().equals("") ||
+                            !surnameTextField.getText().equals("") ||
+                            !passportTextField.getText().equals("")) {
+                        WorkersTable.workerList.add(
+                                new Worker(nameTextField.getText(),
+                                        surnameTextField.getText(),
+                                        passportTextField.getText()));
+                    }else {
+                          try {
+                              new ExceptionFrame();
+                          }catch (Exception e1) {
+                              new Exception(e1.getMessage());
+                          }
+                    }
+                break;
+
+            case "Clear":
+                nameTextField.setText("");
+                surnameTextField.setText("");
+                passportTextField.setText("");
+                break;
+            case "Cancel":
+                this.dispose();
+                break;
+        }
+    }
 }
