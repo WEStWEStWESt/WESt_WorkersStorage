@@ -49,10 +49,10 @@ import java.util.List;
 public class FindTable extends AbstractTableModel {
 
     public static String[] header;
-    public static List<Worker> findWorkers = new ArrayList<>();
+    public static List<Worker> findWorkersList = new ArrayList<>();
 
     FindTable(List<Worker> findWorkers, String[] header) {
-        this.findWorkers = findWorkers;
+        this.findWorkersList = findWorkers;
         this.header = header;
     }
 
@@ -61,7 +61,7 @@ public class FindTable extends AbstractTableModel {
     }
 
     public int getRowCount() {
-        return findWorkers.size();
+        return findWorkersList.size();
     }
 
     public int getColumnCount() {
@@ -71,11 +71,11 @@ public class FindTable extends AbstractTableModel {
     public Object getValueAt(int r, int c) {
         switch (c) {
             case 0:
-                return findWorkers.get(r).getName();
+                return findWorkersList.get(r).getName();
             case 1:
-                return findWorkers.get(r).getSurname();
+                return findWorkersList.get(r).getSurname();
             case 2:
-                return findWorkers.get(r).getPassportNumber();
+                return findWorkersList.get(r).getPassportNumber();
             default:
                 return "";
         }

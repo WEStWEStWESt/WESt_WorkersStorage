@@ -6,8 +6,8 @@ public class Main {
 
     public static void main(String[] args) {
           new GeneralFrame(WorkersTable.workerList);
-          new AddFrame();
-        //new FindFrame();
+          //new AddFrame();
+          new FindFrame();
         //new DeleteFrame();
 
     }

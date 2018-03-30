@@ -15,6 +15,7 @@ public class WorkersTable extends AbstractTableModel {
 
         workerList.add(new Worker("qqq","yy","123"));
         workerList.add(new Worker("aaa","ddd","444"));
+        workerList.add(new Worker("qqq","yy","1111111"));
         workerList.add(new Worker("hhh","jjj","666"));
     }
 
