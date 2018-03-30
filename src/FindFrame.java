@@ -137,7 +137,7 @@ public class FindFrame extends JFrame implements ActionListener {
                    throw new IllegalArgumentException("Рабочего с таким именем в базе нет");
                 }
             }
-            findWorkersTable.fireTableDataChanged();
+                findWorkersTable.fireTableDataChanged();
         }else{
             try {
                 new ExceptionFrame();
