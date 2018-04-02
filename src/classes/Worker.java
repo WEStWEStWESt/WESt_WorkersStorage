@@ -1,3 +1,5 @@
+package classes;
+
 public class Worker {
 
     private String name;
@@ -14,23 +16,12 @@ public class Worker {
         return name;
     }
 
-    /*public void setName(String name) {
-        this.name = name;
-    }*/
-
     public String getSurname() {
         return surname;
     }
 
-    /*public void setSurname(String surname) {
-        this.surname = surname;
-    }
-*/
     public String getPassportNumber() {
         return passportNumber;
     }
 
-    /*public void setPassportNumber(String passportNumber) {
-        this.passportNumber = passportNumber;
-    }
-*/}
+}

@@ -1,3 +1,5 @@
+package classes;
+
 import javax.swing.*;
 
 import java.awt.*;
@@ -14,7 +16,7 @@ public class GeneralFrame extends JFrame implements ActionListener {
     public final static String[] header =  {"NAME","SURNAME","PASSPORT"};
     public static WorkersTable workersTable;
 
-    GeneralFrame(List<Worker> all){
+    public GeneralFrame(List<Worker> all){
 
         this.setSize(800,400);
         this.setTitle("General Window");
@@ -56,11 +58,9 @@ public class GeneralFrame extends JFrame implements ActionListener {
         setVisible(true);
     }
 
-
+/*----------------------------------------------------------*/
     @Override
     public void actionPerformed(ActionEvent e) {
-
-
 
     }
 }

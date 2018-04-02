@@ -1,14 +1,13 @@
-import java.util.List;
+import classes.FindFrame;
+import classes.GeneralFrame;
+import classes.WorkersTable;
 
 public class Main {
 
-    //private static List<Worker> workerList = WorkersTable.workerList;
-
     public static void main(String[] args) {
           new GeneralFrame(WorkersTable.workerList);
-          //new AddFrame();
+          new classes.AddFrame();
           new FindFrame();
-        //new DeleteFrame();
-
+          new classes.DeleteFrame();
     }
 }

@@ -1,3 +1,5 @@
+package classes;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -18,7 +20,7 @@ public class FindFrame extends JFrame implements ActionListener {
     private List<Worker> findWorkers = new ArrayList<>();
     public static FindTable findWorkersTable;
 
-    FindFrame(){
+    public FindFrame(){
 
         setSize(700,400);
         setTitle("Frame to Find");
@@ -124,27 +126,23 @@ public class FindFrame extends JFrame implements ActionListener {
         }
     }
 
-    private void findByName(){
-        if (!findWorkers.isEmpty()){
+    private void findByName() {
+        if (!findWorkers.isEmpty()) {
             findWorkers = new ArrayList<>();
         }
+
         String name = findTextField.getText();
-        if (!findTextField.getText().equals("")){
-            for (int i = 0; i < WorkersTable.workerList.size(); i++){
-                if (WorkersTable.workerList.get(i).getName().equals(name)){
+
+        if (!findTextField.getText().equals("")) {
+            for (int i = 0; i < WorkersTable.workerList.size(); i++) {
+                if (WorkersTable.workerList.get(i).getName().equals(name)) {
                     findWorkers.add(WorkersTable.workerList.get(i));
-                }else {
-                   throw new IllegalArgumentException("Рабочего с таким именем в базе нет");
+                } else {
+                      //  new ExceptionHasMessage("")
                 }
             }
-                findWorkersTable.fireTableDataChanged();
-        }else{
-            try {
-                new ExceptionFrame();
-            } catch (Exception e) {
-                new Exception(e.getMessage());
-            }
-        }
+            findWorkersTable.fireTableDataChanged();
 
+        }
     }
 }

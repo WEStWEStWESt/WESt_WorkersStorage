@@ -1,3 +1,5 @@
+package classes;
+
 import javax.swing.*;
 import java.awt.*;
 
@@ -9,7 +11,7 @@ public class DeleteFrame extends JFrame {
 
     private JButton OK, clear, cancel;
 
-    DeleteFrame(){
+    public DeleteFrame(){
 
         this.setSize(450,300);
         this.setTitle("Frame to Delete");

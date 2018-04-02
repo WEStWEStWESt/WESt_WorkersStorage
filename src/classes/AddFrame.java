@@ -1,4 +1,4 @@
-import org.omg.IOP.ExceptionDetailMessage;
+package classes;
 
 import javax.swing.*;
 import java.awt.*;
@@ -13,7 +13,7 @@ public class AddFrame extends JFrame implements ActionListener{
     private JCheckBox toTXT, toBinary, toXML;
     private JButton OK, clear, cancel;
 
-    AddFrame(){
+    public AddFrame(){
 
         this.setSize(450,300);
         this.setTitle("Frame to Add");
@@ -94,11 +94,7 @@ public class AddFrame extends JFrame implements ActionListener{
                                         surnameTextField.getText(),
                                         passportTextField.getText()));
                     }else {
-                          try {
-                              new ExceptionFrame();
-                          }catch (Exception e1) {
-                              new Exception(e1.getMessage());
-                          }
+
                     }
                 break;
 

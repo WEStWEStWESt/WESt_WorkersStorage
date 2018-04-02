@@ -1,3 +1,4 @@
+package classes;
 
 import javax.swing.table.AbstractTableModel;
 import java.util.List;

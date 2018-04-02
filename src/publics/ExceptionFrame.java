@@ -1,3 +1,5 @@
+package publics;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -8,7 +10,7 @@ public class ExceptionFrame extends JFrame implements ActionListener {
     private JLabel exceptionText;
     private JButton button;
 
-    ExceptionFrame(){
+    ExceptionFrame(String string){
         setSize(400,130);
         setTitle("Ну что, накосячил :-) ???");
         setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
@@ -18,8 +20,8 @@ public class ExceptionFrame extends JFrame implements ActionListener {
 
         setLayout(new GridLayout(2,1));
 
-        exceptionText = new JLabel("Не все поля заполнены !!!");
-        exceptionText.setHorizontalAlignment(SwingConstants.CENTER);
+        exceptionText = new JLabel(string, SwingConstants.CENTER);
+        //exceptionText.setHorizontalAlignment(SwingConstants.CENTER);
 
         JPanel panel = new JPanel();
         button = new JButton(" Виноват, сейчас исправлюсь. ");
