@@ -79,23 +79,26 @@ public class AddFrame extends JFrame implements ActionListener{
     }
 
     @Override
-    public void actionPerformed(ActionEvent e) {
+    public void actionPerformed(ActionEvent e)  {
 
         String command = e.getActionCommand();
 
         switch (command){
             case "Add":
-
+                try{
                     if (!nameTextField.getText().equals("") ||
                             !surnameTextField.getText().equals("") ||
                             !passportTextField.getText().equals("")) {
-                        WorkersTable.workerList.add(
+                        WorkersTable.workersTable.add(
                                 new Worker(nameTextField.getText(),
                                         surnameTextField.getText(),
                                         passportTextField.getText()));
                     }else {
 
                     }
+                }catch(Exception e1){
+                    System.out.println("11111111111111111111111111");
+                }
                 break;
 
             case "Clear":

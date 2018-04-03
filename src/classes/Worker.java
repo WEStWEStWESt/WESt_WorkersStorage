@@ -2,9 +2,7 @@ package classes;
 
 public class Worker {
 
-    private String name;
-    private String surname;
-    private String passportNumber;
+    private String name, surname, passportNumber ;
 
     public Worker(String name, String surname, String passportNumber){
         this.name = name;
@@ -24,4 +22,15 @@ public class Worker {
         return passportNumber;
     }
 
+    /*public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setSurname(String surname) {
+        this.surname = surname;
+    }
+
+    public void setPassportNumber(String passportNumber) {
+        this.passportNumber = passportNumber;
+    }*/
 }

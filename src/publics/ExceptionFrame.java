@@ -10,7 +10,7 @@ public class ExceptionFrame extends JFrame implements ActionListener {
     private JLabel exceptionText;
     private JButton button;
 
-    ExceptionFrame(String string){
+    public ExceptionFrame(String string){
         setSize(400,130);
         setTitle("Ну что, накосячил :-) ???");
         setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
@@ -20,7 +20,7 @@ public class ExceptionFrame extends JFrame implements ActionListener {
 
         setLayout(new GridLayout(2,1));
 
-        exceptionText = new JLabel(string, SwingConstants.CENTER);
+        exceptionText = new JLabel(string + "\n", SwingConstants.CENTER);
         //exceptionText.setHorizontalAlignment(SwingConstants.CENTER);
 
         JPanel panel = new JPanel();

@@ -7,35 +7,26 @@ import java.util.*;
 public class WorkersTable extends AbstractTableModel {
 
     public static String[] header ;
-    public static List<Worker> workerList = new ArrayList<>();
+    public static List<Worker> workersTable = new ArrayList<>();
 
-    WorkersTable(List<Worker> workerList, String[] header ){
+    WorkersTable(List<Worker> workersTable, String[] header ){
 
-        this.workerList = workerList;
+        this.workersTable = workersTable;
         this.header = header;
 
-        workerList.add(new Worker("qqq","yy","123"));
-        workerList.add(new Worker("aaa","ddd","444"));
-        workerList.add(new Worker("qqq","yy","1111111"));
-        workerList.add(new Worker("hhh","jjj","666"));
+        workersTable.add(new Worker("qqq","yy","123"));
+        workersTable.add(new Worker("aaa","ddd","444"));
+        workersTable.add(new Worker("qqq","yy","1111111"));
+        workersTable.add(new Worker("hhh","jjj","666"));
     }
 
-
-    public String[] getHeader() {
-        return header;
-    }
-
-    public List<Worker> getWorkerList() {
-        return workerList;
-    }
-
-    public  String getColumnName(int c){
+    public String getColumnName(int c){
         return header[c];
     }
 
     @Override
     public int getRowCount() {
-        return workerList.size();
+        return workersTable.size();
     }
 
     @Override
@@ -47,12 +38,13 @@ public class WorkersTable extends AbstractTableModel {
     public Object getValueAt(int rowIndex, int columnIndex) {
         switch (columnIndex){
             case 0:
-                return workerList.get(rowIndex).getName();
+                return workersTable.get(rowIndex).getName();
             case 1:
-                return workerList.get(rowIndex).getSurname();
+                return workersTable.get(rowIndex).getSurname();
             case 2:
-                return workerList.get(rowIndex).getPassportNumber();
+                return workersTable.get(rowIndex).getPassportNumber();
+            default:
+                return "";
         }
-        return "";
     }
 }

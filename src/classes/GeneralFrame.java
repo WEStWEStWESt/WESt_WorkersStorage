@@ -1,7 +1,6 @@
 package classes;
 
 import javax.swing.*;
-
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -22,7 +21,7 @@ public class GeneralFrame extends JFrame implements ActionListener {
         this.setTitle("General Window");
         this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         this.setLayout(new BorderLayout());
-        //this.setLocationRelativeTo(null);
+        this.setLocationRelativeTo(null);
 
         buttonPanel = new JPanel();
         buttonPanel.setLayout(new GridLayout(5,1));
@@ -61,6 +60,6 @@ public class GeneralFrame extends JFrame implements ActionListener {
 /*----------------------------------------------------------*/
     @Override
     public void actionPerformed(ActionEvent e) {
-
+        System.out.println("дописать код GENERAL FRAME");
     }
 }

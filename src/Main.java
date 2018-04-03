@@ -1,13 +1,11 @@
-import classes.FindFrame;
-import classes.GeneralFrame;
-import classes.WorkersTable;
+import classes.*;
 
 public class Main {
 
     public static void main(String[] args) {
-          new GeneralFrame(WorkersTable.workerList);
-          new classes.AddFrame();
+          new GeneralFrame(WorkersTable.workersTable);
+         // new AddFrame();
           new FindFrame();
-          new classes.DeleteFrame();
+          //new DeleteFrame(); переделать окно!!!!!
     }
 }

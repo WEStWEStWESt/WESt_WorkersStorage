@@ -1,5 +1,6 @@
 package classes;
 
+import publics.ExceptionFrame;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -13,7 +14,7 @@ public class FindFrame extends JFrame implements ActionListener {
     private JComboBox choise;
     private JTextField findTextField;
     private JPanel leftPanel, rightPanel;
-    private JButton find, clearText, clearTable, back;
+    private JButton find, clear, back;
 
     private JTable results;
     private String[] header = GeneralFrame.header;
@@ -30,7 +31,7 @@ public class FindFrame extends JFrame implements ActionListener {
 
         leftPanel = new JPanel();
         //leftPanel.setBackground(Color.GRAY);
-        leftPanel.setLayout(new GridLayout(10,1));
+        leftPanel.setLayout(new GridLayout(9,1));
 
 //----------------------------------------------
 
@@ -52,14 +53,10 @@ public class FindFrame extends JFrame implements ActionListener {
         find.setText("Find");
         find.setActionCommand("Find");
         find.addActionListener(this);
-        clearText = new JButton();
-        clearText.setText("Clear Text");
-        clearText.setActionCommand("ClearText");
-        clearText.addActionListener(this);
-        clearTable = new JButton();
-        clearTable.setText("Clear Table");
-        clearTable.setActionCommand("ClearTable");
-        clearTable.addActionListener(this);
+        clear = new JButton();
+        clear.setText("Clear");
+        clear.setActionCommand("Clear");
+        clear.addActionListener(this);
         back = new JButton();
         back.setText("Back");
         back.setActionCommand("Back");
@@ -71,8 +68,8 @@ public class FindFrame extends JFrame implements ActionListener {
         leftPanel.add(findTextField);
        // leftPanel.add(emptyText);
         leftPanel.add(find);
-        leftPanel.add(clearText);
-        leftPanel.add(clearTable);
+
+        leftPanel.add(clear);
         leftPanel.add(back);
 
 //----------------------------------------------
@@ -104,16 +101,14 @@ public class FindFrame extends JFrame implements ActionListener {
                     findByName();
                 }
                 if(choiceIndex == 1){
-
+                    findBySurname();
                 }
                 if(choiceIndex == 2){
 
                 }
                 break;
-            case "ClearText":
+            case "Clear":
                 findTextField.setText("");
-                break;
-            case "ClearTable":
                 findWorkers.clear();
                 findWorkersTable.fireTableDataChanged();
                 break;
@@ -129,20 +124,42 @@ public class FindFrame extends JFrame implements ActionListener {
     private void findByName() {
         if (!findWorkers.isEmpty()) {
             findWorkers = new ArrayList<>();
+            System.out.println("newArray");
         }
 
         String name = findTextField.getText();
+        System.out.println(name);
 
-        if (!findTextField.getText().equals("")) {
-            for (int i = 0; i < WorkersTable.workerList.size(); i++) {
-                if (WorkersTable.workerList.get(i).getName().equals(name)) {
-                    findWorkers.add(WorkersTable.workerList.get(i));
-                } else {
-                      //  new ExceptionHasMessage("")
-                }
+        for (int i = 0; i < WorkersTable.workersTable.size(); i++) {
+            if (WorkersTable.workersTable.get(i).getName().equals(name)) {
+                findWorkers.add(WorkersTable.workersTable.get(i));
+                System.out.println("22222");
             }
-            findWorkersTable.fireTableDataChanged();
-
         }
+
+        if ( findTextField.getText().equals("") ) {
+            new ExceptionFrame("Пустое поле!\n" + "Введите ИМЯ для поиска.");
+            System.out.println("textField");
+        }
+
+        findWorkersTable.fireTableDataChanged();
+
+    }
+    private void findBySurname() {
+        if (!findWorkers.isEmpty()) {
+            findWorkers = new ArrayList<>();
+        }
+        String surname = findTextField.getText();
+        for (int i = 0; i < WorkersTable.workersTable.size(); i++) {
+            if (WorkersTable.workersTable.get(i).getSurname().equals(surname)) {
+                findWorkers.add(WorkersTable.workersTable.get(i));
+            }
+        }
+        findWorkersTable.fireTableDataChanged();
+        /*if (findTextField.getText().equals("") ) {
+            new ExceptionFrame("Введите ФАМИЛИЮ для поиска.");
+        }else if(findWorkers.isEmpty()){
+            new ExceptionFrame("Рабочего с такой фамилией НЕ НАЙДЕНО.");
+        }*/
     }
 }
