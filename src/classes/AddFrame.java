@@ -1,5 +1,8 @@
 package classes;
 
+import java.io.*;
+import publics.ExceptionFrame;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -12,6 +15,7 @@ public class AddFrame extends JFrame implements ActionListener{
     private JPanel buttonPanel;
     private JCheckBox toTXT, toBinary, toXML;
     private JButton OK, clear, cancel;
+
 
     public AddFrame(){
 
@@ -45,6 +49,8 @@ public class AddFrame extends JFrame implements ActionListener{
         checkBoxPanel.setLayout(new GridLayout(1,3));
 
         toTXT = new JCheckBox("save to TXT");
+        toTXT.setActionCommand("toTXT");
+        toTXT.addActionListener(this);
         toBinary = new JCheckBox("save to BINARY");
         toXML = new JCheckBox("save to XML");
 
@@ -85,30 +91,51 @@ public class AddFrame extends JFrame implements ActionListener{
 
         switch (command){
             case "Add":
-                try{
-                    if (!nameTextField.getText().equals("") ||
-                            !surnameTextField.getText().equals("") ||
-                            !passportTextField.getText().equals("")) {
+                String toTXT = e.getActionCommand();
+                if (  (!nameTextField.getText().equals("") &&
+                        !surnameTextField.getText().equals("") &&
+                        !passportTextField.getText().equals("")) ) {
+                    if (!toTXT.isEmpty()){
+
+                        File file = new File("src/resources/toTXT.txt");
+
                         WorkersTable.workersTable.add(
                                 new Worker(nameTextField.getText(),
                                         surnameTextField.getText(),
                                         passportTextField.getText()));
-                    }else {
+                        GeneralFrame.workersTable.fireTableDataChanged();
+                        try{
 
+                            FileWriter fw = new FileWriter(file,true);
+                            fw.write(nameTextField.getText() + "," +
+                                    surnameTextField.getText() + "," +
+                                    passportTextField.getText() + "\n");
+                            fw.flush();
+
+                        }catch (Exception e1){
+                            new ExceptionFrame("Ошибка записи в файл");
+                        }
+
+                        clear();
                     }
-                }catch(Exception e1){
-                    System.out.println("11111111111111111111111111");
+
+                }else {
+                    new ExceptionFrame("Не все поля заполнены !");
                 }
                 break;
 
             case "Clear":
-                nameTextField.setText("");
-                surnameTextField.setText("");
-                passportTextField.setText("");
+                clear();
                 break;
             case "Cancel":
                 this.dispose();
                 break;
         }
+    }
+
+    private void clear(){
+        nameTextField.setText("");
+        surnameTextField.setText("");
+        passportTextField.setText("");
     }
 }

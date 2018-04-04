@@ -22,11 +22,11 @@ public class Worker {
         return passportNumber;
     }
 
-    /*public void setName(String name) {
+    public void setName(String name) {
         this.name = name;
     }
 
-    public void setSurname(String surname) {
+   /* public void setSurname(String surname) {
         this.surname = surname;
     }
 
