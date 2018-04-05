@@ -18,7 +18,6 @@ public class AddFrame extends JFrame implements ActionListener{
     private JCheckBox toTXT, toBinary, toXML;
     private JButton OK, clear, cancel;
 
-
     public AddFrame(){
 
         this.setSize(450,300);
@@ -132,9 +131,7 @@ public class AddFrame extends JFrame implements ActionListener{
 
         switch (command){
             case "Add":
-                if (  (!nameTextField.getText().equals("") &&
-                        !surnameTextField.getText().equals("") &&
-                        !passportTextField.getText().equals("")) ) {
+                if ( emptyField() == true ) {
 
                         WorkersTable.workersTable.add(
                                 new Worker(nameTextField.getText(),
