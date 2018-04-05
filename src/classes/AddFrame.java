@@ -1,5 +1,7 @@
 package classes;
 
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
 import java.io.*;
 import publics.ExceptionFrame;
 
@@ -50,7 +52,17 @@ public class AddFrame extends JFrame implements ActionListener{
 
         toTXT = new JCheckBox("save to TXT");
         toTXT.setActionCommand("toTXT");
-        toTXT.addActionListener(this);
+        toTXT.addItemListener(new ItemListener() {
+            @Override
+            public void itemStateChanged(ItemEvent e) {
+                if (toTXT.isSelected()){
+                    createWriteFile();
+                    System.out.println("creating file");
+                }else{
+                    System.out.println("галки нет");
+                }
+            }
+        });
         toBinary = new JCheckBox("save to BINARY");
         toXML = new JCheckBox("save to XML");
 
@@ -84,6 +96,35 @@ public class AddFrame extends JFrame implements ActionListener{
         setVisible(true);
     }
 
+    private boolean emptyField(){
+        if (  (!nameTextField.getText().equals("") &&
+                !surnameTextField.getText().equals("") &&
+                !passportTextField.getText().equals("")) ) {
+            return true;
+        }else {
+           return false;
+        }
+    }
+
+    private void createWriteFile(){
+        try{
+            if ( emptyField() == true ) {
+
+                File file = new File("src/resources/out_toTXT.txt");
+                FileWriter fw = new FileWriter(file,true);
+                fw.write(nameTextField.getText() + "," +
+                    surnameTextField.getText() + "," +
+                    passportTextField.getText() + "\n");
+
+                fw.flush();
+            }else {
+                new ExceptionFrame("Не все поля заполнены(createWriteFile)");
+            }
+        }catch (Exception e1){
+            new ExceptionFrame("Ошибка записи в файл(createWriteFile)");
+        }
+    }
+
     @Override
     public void actionPerformed(ActionEvent e)  {
 
@@ -91,33 +132,17 @@ public class AddFrame extends JFrame implements ActionListener{
 
         switch (command){
             case "Add":
-                String toTXT = e.getActionCommand();
                 if (  (!nameTextField.getText().equals("") &&
                         !surnameTextField.getText().equals("") &&
                         !passportTextField.getText().equals("")) ) {
-                    if (!toTXT.isEmpty()){
-
-                        File file = new File("src/resources/toTXT.txt");
 
                         WorkersTable.workersTable.add(
                                 new Worker(nameTextField.getText(),
                                         surnameTextField.getText(),
                                         passportTextField.getText()));
+
                         GeneralFrame.workersTable.fireTableDataChanged();
-                        try{
-
-                            FileWriter fw = new FileWriter(file,true);
-                            fw.write(nameTextField.getText() + "," +
-                                    surnameTextField.getText() + "," +
-                                    passportTextField.getText() + "\n");
-                            fw.flush();
-
-                        }catch (Exception e1){
-                            new ExceptionFrame("Ошибка записи в файл");
-                        }
-
                         clear();
-                    }
 
                 }else {
                     new ExceptionFrame("Не все поля заполнены !");
@@ -138,4 +163,5 @@ public class AddFrame extends JFrame implements ActionListener{
         surnameTextField.setText("");
         passportTextField.setText("");
     }
+
 }
