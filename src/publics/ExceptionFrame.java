@@ -1,5 +1,7 @@
 package publics;
 
+import classes.AddFrame;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -10,11 +12,13 @@ public class ExceptionFrame extends JFrame implements ActionListener {
     private JLabel exceptionText;
     private JButton button;
 
+    public static boolean b ;
+
     public ExceptionFrame(String string){
         setSize(400,130);
         setTitle("Ну что, накосячил :-) ???");
         setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
-        setLocationRelativeTo(null);
+        //setLocationRelativeTo(null);
 
         setLayout(new BorderLayout());
 
@@ -25,6 +29,7 @@ public class ExceptionFrame extends JFrame implements ActionListener {
 
         JPanel panel = new JPanel();
         button = new JButton(" Виноват, сейчас исправлюсь. ");
+        button.setActionCommand("YES");
         button.addActionListener(this);
         panel.add(button);
 
@@ -35,6 +40,10 @@ public class ExceptionFrame extends JFrame implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        this.dispose();
+        String str = e.getActionCommand();
+       if ( str == "YES") {
+           b = true;
+           this.dispose();
+       }
     }
 }
